@@ -50,6 +50,7 @@
     <Compile Include="Fragments\LoginFragment.cs" />
     <Compile Include="Fragments\NotasFragment.cs" />
     <Compile Include="Persistence\AppPersistence.cs" />
+    <Compile Include="Model\Nota.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -71,6 +72,7 @@
     <Folder Include="Resources\drawable\" />
     <Folder Include="Fragments\" />
     <Folder Include="Persistence\" />
+    <Folder Include="Model\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
