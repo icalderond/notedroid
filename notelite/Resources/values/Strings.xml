@@ -2,4 +2,7 @@
 <resources>
 	<string name="hello">Hello World, Click Me!</string>
 	<string name="app_name">notelite</string>
+	<string name="usuario_hint">Usuario</string>
+	<string name="clave_hint">Clave</string>
+	<string name="button_entrar_text">Entrar</string>
 </resources>
