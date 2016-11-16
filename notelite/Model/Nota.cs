@@ -23,5 +23,6 @@ namespace notelite
             get;
             set;
         }
+        public override string ToString() => $"{Titulo}";
     }
 }
