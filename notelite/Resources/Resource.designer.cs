@@ -53,11 +53,11 @@ namespace notelite
 			// aapt resource value: 0x7f050001
 			public const int etUsuario = 2131034113;
 			
+			// aapt resource value: 0x7f050004
+			public const int fragment_container = 2131034116;
+			
 			// aapt resource value: 0x7f050000
 			public const int linearLayout1 = 2131034112;
-			
-			// aapt resource value: 0x7f050004
-			public const int myButton = 2131034116;
 			
 			static Id()
 			{

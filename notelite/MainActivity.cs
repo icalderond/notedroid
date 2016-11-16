@@ -1,6 +1,7 @@
 ﻿using Android.App;
 using Android.Widget;
 using Android.OS;
+using notelite.Fragments;
 
 namespace notelite
 {
@@ -14,6 +15,10 @@ namespace notelite
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.Main);
 
+            var fragment = new LoginFragment();
+            var fragmentManager = FragmentManager.BeginTransaction();
+            fragmentManager.Add(Resource.Id.fragment_container, fragment);
+            fragmentManager.Commit();
         }
     }
 }
