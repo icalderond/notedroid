@@ -59,6 +59,9 @@ namespace notelite
 			// aapt resource value: 0x7f050000
 			public const int linearLayout1 = 2131034112;
 			
+			// aapt resource value: 0x7f050005
+			public const int lvNotas = 2131034117;
+			
 			static Id()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
