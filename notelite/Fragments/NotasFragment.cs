@@ -29,6 +29,13 @@ namespace notelite
             view = inflater.Inflate(Resource.Layout.NotasLayout, container, false);
             lvNotas = view.FindViewById<ListView>(Resource.Id.lvNotas);
 
+            lvNotas.ItemClick += (s, a) =>
+            {
+                var notaFragment = new NotaFragment();
+                var fragmentManager = FragmentManager.BeginTransaction();
+                fragmentManager.Replace(Resource.Id.fragment_container, notaFragment);
+                fragmentManager.Commit();
+            };
             return view;
         }
         public override void OnAttach(Activity activity)
