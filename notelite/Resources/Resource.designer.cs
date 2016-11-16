@@ -63,17 +63,20 @@ namespace notelite
 			// aapt resource value: 0x7f060003
 			public const int btnEntrar = 2131099651;
 			
-			// aapt resource value: 0x7f060007
-			public const int btnNuevaNota = 2131099655;
+			// aapt resource value: 0x7f060006
+			public const int btnGuardar = 2131099654;
+			
+			// aapt resource value: 0x7f060008
+			public const int btnNuevaNota = 2131099656;
 			
 			// aapt resource value: 0x7f060005
 			public const int editText1 = 2131099653;
 			
-			// aapt resource value: 0x7f060006
-			public const int editText2 = 2131099654;
-			
 			// aapt resource value: 0x7f060002
 			public const int etClave = 2131099650;
+			
+			// aapt resource value: 0x7f060007
+			public const int etContenido = 2131099655;
 			
 			// aapt resource value: 0x7f060001
 			public const int etUsuario = 2131099649;
@@ -84,8 +87,8 @@ namespace notelite
 			// aapt resource value: 0x7f060000
 			public const int linearLayout1 = 2131099648;
 			
-			// aapt resource value: 0x7f060008
-			public const int lvNotas = 2131099656;
+			// aapt resource value: 0x7f060009
+			public const int lvNotas = 2131099657;
 			
 			static Id()
 			{

@@ -34,7 +34,7 @@ namespace notelite
 
             lvNotas.ItemClick += (s, a) =>
             {
-                var notaFragment = new NotaFragment(a.Position)
+                var notaFragment = new NotaFragment(a.Position);
                 var fragmentManager = FragmentManager.BeginTransaction();
                 fragmentManager.Replace(Resource.Id.fragment_container, notaFragment);
                 fragmentManager.Commit();
