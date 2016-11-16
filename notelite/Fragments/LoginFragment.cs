@@ -30,8 +30,7 @@ namespace notelite.Fragments
             etClave = view.FindViewById<EditText>(Resource.Id.etClave);
             btnEntrar = view.FindViewById<Button>(Resource.Id.btnEntrar);
 
-
-            return base.OnCreateView(inflater, container, savedInstanceState);
+            return view;
         }
     }
 }
