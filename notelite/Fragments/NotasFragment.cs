@@ -18,6 +18,7 @@ namespace notelite
     {
         View view;
         ListView lvNotas;
+        ImageView btnNuevaNota;
 
         Activity activity;
 
@@ -27,9 +28,18 @@ namespace notelite
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             view = inflater.Inflate(Resource.Layout.NotasLayout, container, false);
+
             lvNotas = view.FindViewById<ListView>(Resource.Id.lvNotas);
+            btnNuevaNota = view.FindViewById<ImageButton>(Resource.Id.btnNuevaNota);
 
             lvNotas.ItemClick += (s, a) =>
+            {
+                var notaFragment = new NotaFragment(a.Position)
+                var fragmentManager = FragmentManager.BeginTransaction();
+                fragmentManager.Replace(Resource.Id.fragment_container, notaFragment);
+                fragmentManager.Commit();
+            };
+            btnNuevaNota.Click += (s, a) =>
             {
                 var notaFragment = new NotaFragment();
                 var fragmentManager = FragmentManager.BeginTransaction();

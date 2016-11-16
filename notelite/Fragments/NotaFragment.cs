@@ -16,6 +16,11 @@ namespace notelite
 {
     public class NotaFragment : Fragment
     {
+        int PosicionNota;
+        public NotaFragment(int _posicion = -1)
+        {
+            PosicionNota = _posicion;
+        }
         View view;
         public override void OnCreate(Bundle savedInstanceState) => base.OnCreate(savedInstanceState);
 
