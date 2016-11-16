@@ -41,32 +41,51 @@ namespace notelite
 			}
 		}
 		
+		public partial class Drawable
+		{
+			
+			// aapt resource value: 0x7f020000
+			public const int ic_add_circle_white_24dp = 2130837504;
+			
+			static Drawable()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Drawable()
+			{
+			}
+		}
+		
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f050003
-			public const int btnEntrar = 2131034115;
+			// aapt resource value: 0x7f060003
+			public const int btnEntrar = 2131099651;
 			
-			// aapt resource value: 0x7f050005
-			public const int editText1 = 2131034117;
+			// aapt resource value: 0x7f060005
+			public const int editText1 = 2131099653;
 			
-			// aapt resource value: 0x7f050006
-			public const int editText2 = 2131034118;
+			// aapt resource value: 0x7f060006
+			public const int editText2 = 2131099654;
 			
-			// aapt resource value: 0x7f050002
-			public const int etClave = 2131034114;
+			// aapt resource value: 0x7f060002
+			public const int etClave = 2131099650;
 			
-			// aapt resource value: 0x7f050001
-			public const int etUsuario = 2131034113;
+			// aapt resource value: 0x7f060001
+			public const int etUsuario = 2131099649;
 			
-			// aapt resource value: 0x7f050004
-			public const int fragment_container = 2131034116;
+			// aapt resource value: 0x7f060004
+			public const int fragment_container = 2131099652;
 			
-			// aapt resource value: 0x7f050000
-			public const int linearLayout1 = 2131034112;
+			// aapt resource value: 0x7f060007
+			public const int imageButton1 = 2131099655;
 			
-			// aapt resource value: 0x7f050007
-			public const int lvNotas = 2131034119;
+			// aapt resource value: 0x7f060000
+			public const int linearLayout1 = 2131099648;
+			
+			// aapt resource value: 0x7f060008
+			public const int lvNotas = 2131099656;
 			
 			static Id()
 			{
@@ -81,17 +100,17 @@ namespace notelite
 		public partial class Layout
 		{
 			
-			// aapt resource value: 0x7f030000
-			public const int LoginLayout = 2130903040;
+			// aapt resource value: 0x7f040000
+			public const int LoginLayout = 2130968576;
 			
-			// aapt resource value: 0x7f030001
-			public const int Main = 2130903041;
+			// aapt resource value: 0x7f040001
+			public const int Main = 2130968577;
 			
-			// aapt resource value: 0x7f030002
-			public const int NotaLayout = 2130903042;
+			// aapt resource value: 0x7f040002
+			public const int NotaLayout = 2130968578;
 			
-			// aapt resource value: 0x7f030003
-			public const int NotasLayout = 2130903043;
+			// aapt resource value: 0x7f040003
+			public const int NotasLayout = 2130968579;
 			
 			static Layout()
 			{
@@ -106,8 +125,8 @@ namespace notelite
 		public partial class Mipmap
 		{
 			
-			// aapt resource value: 0x7f020000
-			public const int Icon = 2130837504;
+			// aapt resource value: 0x7f030000
+			public const int Icon = 2130903040;
 			
 			static Mipmap()
 			{
@@ -122,20 +141,20 @@ namespace notelite
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f040001
-			public const int app_name = 2130968577;
+			// aapt resource value: 0x7f050001
+			public const int app_name = 2131034113;
 			
-			// aapt resource value: 0x7f040004
-			public const int button_entrar_text = 2130968580;
+			// aapt resource value: 0x7f050004
+			public const int button_entrar_text = 2131034116;
 			
-			// aapt resource value: 0x7f040003
-			public const int clave_hint = 2130968579;
+			// aapt resource value: 0x7f050003
+			public const int clave_hint = 2131034115;
 			
-			// aapt resource value: 0x7f040000
-			public const int hello = 2130968576;
+			// aapt resource value: 0x7f050000
+			public const int hello = 2131034112;
 			
-			// aapt resource value: 0x7f040002
-			public const int usuario_hint = 2130968578;
+			// aapt resource value: 0x7f050002
+			public const int usuario_hint = 2131034114;
 			
 			static String()
 			{

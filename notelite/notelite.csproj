@@ -73,6 +73,7 @@
     <AndroidResource Include="Resources\layout\LoginLayout.axml" />
     <AndroidResource Include="Resources\layout\NotasLayout.axml" />
     <AndroidResource Include="Resources\layout\NotaLayout.axml" />
+    <AndroidResource Include="Resources\drawable\ic_add_circle_white_24dp.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
