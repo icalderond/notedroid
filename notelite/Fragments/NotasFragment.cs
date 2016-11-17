@@ -21,8 +21,9 @@ namespace notelite
         ImageView btnNuevaNota;
 
         Activity activity;
+        AppPersistence persistencia;
 
-        List<string> listaNotas = new List<string>();
+        //List<string> listaNotas = new List<string>();
         public override void OnCreate(Bundle savedInstanceState) => base.OnCreate(savedInstanceState);
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -31,6 +32,8 @@ namespace notelite
 
             lvNotas = view.FindViewById<ListView>(Resource.Id.lvNotas);
             btnNuevaNota = view.FindViewById<ImageButton>(Resource.Id.btnNuevaNota);
+
+            persistencia = new AppPersistence(activity);
 
             lvNotas.ItemClick += (s, a) =>
             {
@@ -55,10 +58,12 @@ namespace notelite
         }
         public override void OnStart()
         {
-            for (int i = 0; i < 15; i++)
-                listaNotas.Add($"Esta es la nota {i}");
+            //for (int i = 0; i < 15; i++)
+            //    listaNotas.Add($"Esta es la nota {i}");
 
-            lvNotas.Adapter = new ArrayAdapter<string>(activity, Android.Resource.Layout.SimpleListItem1, listaNotas);
+            var lista = persistencia.ListaNotas.Select(item => item.Titulo).ToArray();
+            lvNotas.Adapter = new ArrayAdapter<string>
+                (activity, Android.Resource.Layout.SimpleListItem1, lista);
             base.OnStart();
         }
     }
