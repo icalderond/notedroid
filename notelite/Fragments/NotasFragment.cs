@@ -61,9 +61,11 @@ namespace notelite
             //for (int i = 0; i < 15; i++)
             //    listaNotas.Add($"Esta es la nota {i}");
 
-            var lista = persistencia.ListaNotas.Select(item => item.Titulo).ToArray();
-            lvNotas.Adapter = new ArrayAdapter<string>
-                (activity, Android.Resource.Layout.SimpleListItem1, lista);
+            //var lista = persistencia.ListaNotas.Select(item => item.Titulo).ToArray();
+            //lvNotas.Adapter = new ArrayAdapter<string>
+            //    (activity, Android.Resource.Layout.SimpleListItem1, lista);
+
+            lvNotas.Adapter = new NotaAdapter(activity, persistencia.ListaNotas);
             base.OnStart();
         }
     }

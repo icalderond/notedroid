@@ -22,19 +22,13 @@ namespace notelite
         {
             get
             {
-                throw new NotImplementedException();
+                return ListaNotas.Count;
             }
         }
 
-        public override Java.Lang.Object GetItem(int position)
-        {
-            throw new NotImplementedException();
-        }
+        public override Java.Lang.Object GetItem(int position) => ListaNotas[position].ToString();
 
-        public override long GetItemId(int position)
-        {
-            throw new NotImplementedException();
-        }
+        public override long GetItemId(int position) => ListaNotas[position].GetHashCode();
 
         public override View GetView(int position, View convertView, ViewGroup parent)
         {
@@ -42,9 +36,9 @@ namespace notelite
             if (view == null)
                 view = activity.LayoutInflater.Inflate(Resource.Layout.ItemNotaTemplate, null);
 
-            var tvTitulo = view.FindViewById<EditText>(Resource.Id.tvTitulo);
-            var tvContenido = view.FindViewById<EditText>(Resource.Id.tvTitulo);
-            var tvFecha = view.FindViewById<EditText>(Resource.Id.tvFecha);
+            var tvTitulo = view.FindViewById<TextView>(Resource.Id.tvTitulo);
+            var tvContenido = view.FindViewById<TextView>(Resource.Id.tvTitulo);
+            var tvFecha = view.FindViewById<TextView>(Resource.Id.tvFecha);
 
             var currentNote = ListaNotas[position];
 
