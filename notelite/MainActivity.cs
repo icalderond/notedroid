@@ -15,7 +15,7 @@ namespace notelite
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.Main);
 
-            var fragment = new LoginFragment();
+            var fragment = new NotasFragment();
             var fragmentManager = FragmentManager.BeginTransaction();
             fragmentManager.Add(Resource.Id.fragment_container, fragment);
             fragmentManager.Commit();
