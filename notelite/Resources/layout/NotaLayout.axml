@@ -15,7 +15,16 @@
         android:text="Guardar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btnGuardar" />
+        android:id="@+id/btnGuardar"
+        android:background="#ff37b45d"
+        android:textColor="#FFF" />
+    <Button
+        android:text="Borrar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnBorrar"
+        android:background="#ffcf5454"
+        android:textColor="#FFF" />
     <EditText xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -27,6 +27,7 @@ namespace notelite
         EditText etTitulo;
         EditText etContenido;
         Button btnGuardar;
+        Button btnBorrar;
 
         Activity activity;
         AppPersistence persistencia;
@@ -39,6 +40,7 @@ namespace notelite
             etTitulo = view.FindViewById<EditText>(Resource.Id.etTitulo);
             etContenido = view.FindViewById<EditText>(Resource.Id.etContenido);
             btnGuardar = view.FindViewById<Button>(Resource.Id.btnGuardar);
+            btnBorrar = view.FindViewById<Button>(Resource.Id.btnBorrar);
 
             persistencia = new AppPersistence(activity);
 
@@ -58,6 +60,17 @@ namespace notelite
                     lista[PosicionNota].FechaEdicion = fecha;
                 }
 
+                persistencia.ListaNotas = lista;
+
+                var notaFragment = new NotasFragment();
+                var fragmentManager = FragmentManager.BeginTransaction();
+                fragmentManager.Replace(Resource.Id.fragment_container, notaFragment);
+                fragmentManager.Commit();
+            };
+            btnBorrar.Click += (s, a) =>
+            {
+                var lista = persistencia.ListaNotas;
+                lista.RemoveAt(PosicionNota);
                 persistencia.ListaNotas = lista;
 
                 var notaFragment = new NotasFragment();
