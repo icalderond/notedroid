@@ -37,7 +37,7 @@ namespace notelite
                 view = activity.LayoutInflater.Inflate(Resource.Layout.ItemNotaTemplate, null);
 
             var tvTitulo = view.FindViewById<TextView>(Resource.Id.tvTitulo);
-            var tvContenido = view.FindViewById<TextView>(Resource.Id.tvTitulo);
+            var tvContenido = view.FindViewById<TextView>(Resource.Id.tvContenido);
             var tvFecha = view.FindViewById<TextView>(Resource.Id.tvFecha);
 
             var currentNote = ListaNotas[position];
