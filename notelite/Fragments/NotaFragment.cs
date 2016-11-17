@@ -51,15 +51,19 @@ namespace notelite
                 var lista = persistencia.ListaNotas;
 
                 if (PosicionNota == -1)
-                {
                     lista.Add(new Nota() { Titulo = titulo, Contenido = contenido, FechaEdicion = fecha });
-                    persistencia.ListaNotas = lista;
-
-                    var notaFragment = new NotasFragment();
-                    var fragmentManager = FragmentManager.BeginTransaction();
-                    fragmentManager.Replace(Resource.Id.fragment_container, notaFragment);
-                    fragmentManager.Commit();
+                else {
+                    lista[PosicionNota].Titulo = titulo;
+                    lista[PosicionNota].Contenido = contenido;
+                    lista[PosicionNota].FechaEdicion = fecha;
                 }
+
+                persistencia.ListaNotas = lista;
+
+                var notaFragment = new NotasFragment();
+                var fragmentManager = FragmentManager.BeginTransaction();
+                fragmentManager.Replace(Resource.Id.fragment_container, notaFragment);
+                fragmentManager.Commit();
             };
 
             return view;
@@ -68,6 +72,16 @@ namespace notelite
         {
             this.activity = activity;
             base.OnAttach(activity);
+        }
+        public override void OnStart()
+        {
+            if (PosicionNota != -1)
+            {
+                var currentNote = persistencia.ListaNotas[PosicionNota];
+                etTitulo.Text = currentNote.Titulo;
+                etContenido.Text = currentNote.Contenido;
+            }
+            base.OnStart();
         }
     }
 }
