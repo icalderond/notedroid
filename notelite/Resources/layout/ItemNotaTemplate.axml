@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <TextView xmlns:tools="http://schemas.android.com/tools"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvTitulo"
+        tools:text="Titulo de la nota"
+        android:textStyle="bold"
+        android:typeface="serif" />
+    <TextView xmlns:tools="http://schemas.android.com/tools"
+        android:text="Small Text"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvFecha"
+        tools:text="25 Diciembre 2016" />
+    <TextView xmlns:tools="http://schemas.android.com/tools"
+        android:text="Medium Text"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvContenido"
+        tools:text="Resumen de la nota que contienen una descripcion larga con tres puntos al final..."
+        android:typeface="serif" />
+</LinearLayout>

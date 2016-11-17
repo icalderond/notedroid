@@ -55,6 +55,7 @@
     <Compile Include="Persistence\AppPersistence.cs" />
     <Compile Include="Model\Nota.cs" />
     <Compile Include="Fragments\NotaFragment.cs" />
+    <Compile Include="Model\NotaAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -74,6 +75,7 @@
     <AndroidResource Include="Resources\layout\NotasLayout.axml" />
     <AndroidResource Include="Resources\layout\NotaLayout.axml" />
     <AndroidResource Include="Resources\drawable\ic_add_circle_white_24dp.png" />
+    <AndroidResource Include="Resources\layout\ItemNotaTemplate.axml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
