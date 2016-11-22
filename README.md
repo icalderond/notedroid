@@ -37,6 +37,8 @@ Temas a tratar durante este curso
 ### Dia 3: Planeando y desarrollando la app
 
 ### Dia 4: Haciendo una aplicación Android utilizando
-* Web Service
+* Web Service 
 * Persistencia de datos
 * Fragments
+
+[Link del web service terminado](https://github.com/icalderond/notedroid_webservice)
