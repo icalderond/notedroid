@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://tempuri.org/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="AddNote">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_nuevaNota" type="tns:Nota" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Nota">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Titulo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Contenido" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Fecha" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddNoteResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetNotas">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetNotasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNotasResult" type="tns:ArrayOfNota" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfNota">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Nota" nillable="true" type="tns:Nota" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DeleteNota">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_nota" type="tns:Nota" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteNotaResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AddNoteSoapIn">
+    <wsdl:part name="parameters" element="tns:AddNote" />
+  </wsdl:message>
+  <wsdl:message name="AddNoteSoapOut">
+    <wsdl:part name="parameters" element="tns:AddNoteResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetNotasSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNotas" />
+  </wsdl:message>
+  <wsdl:message name="GetNotasSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNotasResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteNotaSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteNota" />
+  </wsdl:message>
+  <wsdl:message name="DeleteNotaSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteNotaResponse" />
+  </wsdl:message>
+  <wsdl:portType name="LogicaNotasSoap">
+    <wsdl:operation name="AddNote">
+      <wsdl:input message="tns:AddNoteSoapIn" />
+      <wsdl:output message="tns:AddNoteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNotas">
+      <wsdl:input message="tns:GetNotasSoapIn" />
+      <wsdl:output message="tns:GetNotasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteNota">
+      <wsdl:input message="tns:DeleteNotaSoapIn" />
+      <wsdl:output message="tns:DeleteNotaSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="LogicaNotasSoap" type="tns:LogicaNotasSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddNote">
+      <soap:operation soapAction="http://tempuri.org/AddNote" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNotas">
+      <soap:operation soapAction="http://tempuri.org/GetNotas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteNota">
+      <soap:operation soapAction="http://tempuri.org/DeleteNota" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="LogicaNotasSoap12" type="tns:LogicaNotasSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddNote">
+      <soap12:operation soapAction="http://tempuri.org/AddNote" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNotas">
+      <soap12:operation soapAction="http://tempuri.org/GetNotas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteNota">
+      <soap12:operation soapAction="http://tempuri.org/DeleteNota" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LogicaNotas">
+    <wsdl:port name="LogicaNotasSoap" binding="tns:LogicaNotasSoap">
+      <soap:address location="http://192.168.1.222:8090/ServiceNotas/LogicaNotas.asmx" />
+    </wsdl:port>
+    <wsdl:port name="LogicaNotasSoap12" binding="tns:LogicaNotasSoap12">
+      <soap12:address location="http://192.168.1.222:8090/ServiceNotas/LogicaNotas.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

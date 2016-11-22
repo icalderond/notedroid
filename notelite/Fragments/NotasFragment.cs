@@ -11,6 +11,7 @@ using Android.Runtime;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
+using notelite.ServiceNotas;
 
 namespace notelite
 {
@@ -23,7 +24,7 @@ namespace notelite
         Activity activity;
         AppPersistence persistencia;
 
-        //List<string> listaNotas = new List<string>();
+        LogicaNotas service;
         public override void OnCreate(Bundle savedInstanceState) => base.OnCreate(savedInstanceState);
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -34,7 +35,7 @@ namespace notelite
             btnNuevaNota = view.FindViewById<ImageButton>(Resource.Id.btnNuevaNota);
 
             persistencia = new AppPersistence(activity);
-
+            service = new LogicaNotas();
             lvNotas.ItemClick += (s, a) =>
             {
                 var notaFragment = new NotaFragment(a.Position);
@@ -49,6 +50,21 @@ namespace notelite
                 fragmentManager.Replace(Resource.Id.fragment_container, notaFragment);
                 fragmentManager.Commit();
             };
+
+            service.GetNotasCompleted += (s, a) =>
+            {
+                persistencia.ListaNotas = a.Result.ToList();
+                lvNotas.Adapter = new NotaAdapter(activity, persistencia.ListaNotas);
+            };
+            service.AddNoteCompleted += (s, a) =>
+            {
+
+                //Agregado correctamente
+            };
+            service.DeleteNotaCompleted += (s, a) =>
+            {
+                //Borrado correctamente
+            };
             return view;
         }
         public override void OnAttach(Activity activity)
@@ -58,14 +74,7 @@ namespace notelite
         }
         public override void OnStart()
         {
-            //for (int i = 0; i < 15; i++)
-            //    listaNotas.Add($"Esta es la nota {i}");
-
-            //var lista = persistencia.ListaNotas.Select(item => item.Titulo).ToArray();
-            //lvNotas.Adapter = new ArrayAdapter<string>
-            //    (activity, Android.Resource.Layout.SimpleListItem1, lista);
-
-            lvNotas.Adapter = new NotaAdapter(activity, persistencia.ListaNotas);
+            service.GetNotasAsync();
             base.OnStart();
         }
     }

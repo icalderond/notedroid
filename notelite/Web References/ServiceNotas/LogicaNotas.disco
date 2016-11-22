@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="http://192.168.1.222:8090/ServiceNotas/LogicaNotas.asmx?wsdl" docRef="http://192.168.1.222:8090/ServiceNotas/LogicaNotas.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="http://192.168.1.222:8090/ServiceNotas/LogicaNotas.asmx" xmlns:q1="http://tempuri.org/" binding="q1:LogicaNotasSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="http://192.168.1.222:8090/ServiceNotas/LogicaNotas.asmx" xmlns:q2="http://tempuri.org/" binding="q2:LogicaNotasSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>
