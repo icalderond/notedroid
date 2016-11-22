@@ -54,16 +54,7 @@ namespace notelite
             service.GetNotasCompleted += (s, a) =>
             {
                 persistencia.ListaNotas = a.Result.ToList();
-                lvNotas.Adapter = new NotaAdapter(activity, persistencia.ListaNotas);
-            };
-            service.AddNoteCompleted += (s, a) =>
-            {
-
-                //Agregado correctamente
-            };
-            service.DeleteNotaCompleted += (s, a) =>
-            {
-                //Borrado correctamente
+                lvNotas.Adapter = new NotaAdapter(activity, persistencia.ListaNotas.OrderByDescending(o => o.Fecha));
             };
             return view;
         }
@@ -72,10 +63,10 @@ namespace notelite
             this.activity = activity;
             base.OnAttach(activity);
         }
-        public override void OnStart()
+        public override void OnResume()
         {
             service.GetNotasAsync();
-            base.OnStart();
+            base.OnResume();
         }
     }
 }

@@ -28,6 +28,8 @@ namespace notelite.ServiceNotas {
         
         private System.Threading.SendOrPostCallback GetNotasOperationCompleted;
         
+        private System.Threading.SendOrPostCallback UpdateNotaOperationCompleted;
+        
         private System.Threading.SendOrPostCallback DeleteNotaOperationCompleted;
         
         /// CodeRemarks
@@ -46,13 +48,17 @@ namespace notelite.ServiceNotas {
         public event GetNotasCompletedEventHandler GetNotasCompleted;
         
         /// CodeRemarks
+        public event UpdateNotaCompletedEventHandler UpdateNotaCompleted;
+        
+        /// CodeRemarks
         public event DeleteNotaCompletedEventHandler DeleteNotaCompleted;
         
         /// CodeRemarks
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/AddNote", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void AddNote(Nota _nuevaNota) {
-            this.Invoke("AddNote", new object[] {
+        public Nota[] AddNote(Nota _nuevaNota) {
+            object[] results = this.Invoke("AddNote", new object[] {
                         _nuevaNota});
+            return ((Nota[])(results[0]));
         }
         
         /// CodeRemarks
@@ -72,7 +78,7 @@ namespace notelite.ServiceNotas {
         private void OnAddNoteOperationCompleted(object arg) {
             if ((this.AddNoteCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.AddNoteCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.AddNoteCompleted(this, new AddNoteCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -104,30 +110,60 @@ namespace notelite.ServiceNotas {
         }
         
         /// CodeRemarks
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/DeleteNota", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void DeleteNota(Nota _nota) {
-            this.Invoke("DeleteNota", new object[] {
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/UpdateNota", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public Nota[] UpdateNota(Nota _nota) {
+            object[] results = this.Invoke("UpdateNota", new object[] {
                         _nota});
+            return ((Nota[])(results[0]));
         }
         
         /// CodeRemarks
-        public void DeleteNotaAsync(Nota _nota) {
-            this.DeleteNotaAsync(_nota, null);
+        public void UpdateNotaAsync(Nota _nota) {
+            this.UpdateNotaAsync(_nota, null);
         }
         
         /// CodeRemarks
-        public void DeleteNotaAsync(Nota _nota, object userState) {
+        public void UpdateNotaAsync(Nota _nota, object userState) {
+            if ((this.UpdateNotaOperationCompleted == null)) {
+                this.UpdateNotaOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUpdateNotaOperationCompleted);
+            }
+            this.InvokeAsync("UpdateNota", new object[] {
+                        _nota}, this.UpdateNotaOperationCompleted, userState);
+        }
+        
+        private void OnUpdateNotaOperationCompleted(object arg) {
+            if ((this.UpdateNotaCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.UpdateNotaCompleted(this, new UpdateNotaCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// CodeRemarks
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/DeleteNota", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public Nota[] DeleteNota(int _notaId) {
+            object[] results = this.Invoke("DeleteNota", new object[] {
+                        _notaId});
+            return ((Nota[])(results[0]));
+        }
+        
+        /// CodeRemarks
+        public void DeleteNotaAsync(int _notaId) {
+            this.DeleteNotaAsync(_notaId, null);
+        }
+        
+        /// CodeRemarks
+        public void DeleteNotaAsync(int _notaId, object userState) {
             if ((this.DeleteNotaOperationCompleted == null)) {
                 this.DeleteNotaOperationCompleted = new System.Threading.SendOrPostCallback(this.OnDeleteNotaOperationCompleted);
             }
             this.InvokeAsync("DeleteNota", new object[] {
-                        _nota}, this.DeleteNotaOperationCompleted, userState);
+                        _notaId}, this.DeleteNotaOperationCompleted, userState);
         }
         
         private void OnDeleteNotaOperationCompleted(object arg) {
             if ((this.DeleteNotaCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.DeleteNotaCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.DeleteNotaCompleted(this, new DeleteNotaCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -161,7 +197,29 @@ namespace notelite.ServiceNotas {
     
     /// CodeRemarks
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
-    public delegate void AddNoteCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    public delegate void AddNoteCompletedEventHandler(object sender, AddNoteCompletedEventArgs e);
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class AddNoteCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal AddNoteCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// CodeRemarks
+        public Nota[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Nota[])(this.results[0]));
+            }
+        }
+    }
     
     /// CodeRemarks
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
@@ -191,5 +249,53 @@ namespace notelite.ServiceNotas {
     
     /// CodeRemarks
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
-    public delegate void DeleteNotaCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    public delegate void UpdateNotaCompletedEventHandler(object sender, UpdateNotaCompletedEventArgs e);
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class UpdateNotaCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal UpdateNotaCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// CodeRemarks
+        public Nota[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Nota[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    public delegate void DeleteNotaCompletedEventHandler(object sender, DeleteNotaCompletedEventArgs e);
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class DeleteNotaCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal DeleteNotaCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// CodeRemarks
+        public Nota[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Nota[])(this.results[0]));
+            }
+        }
+    }
 }

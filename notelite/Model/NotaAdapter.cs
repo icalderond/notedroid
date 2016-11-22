@@ -9,45 +9,50 @@ using notelite.ServiceNotas;
 
 namespace notelite
 {
-	public class NotaAdapter : BaseAdapter
-	{
-		Activity activity;
-		List<Nota> ListaNotas;
-		public NotaAdapter(Activity _activity, IEnumerable<Nota> _listaNotas)
-		{
-			activity = _activity;
-			ListaNotas = _listaNotas.ToList();
-		}
+    public class NotaAdapter : BaseAdapter
+    {
+        Activity activity;
+        List<Nota> ListaNotas;
+        public NotaAdapter(Activity _activity, IEnumerable<Nota> _listaNotas)
+        {
+            activity = _activity;
+            ListaNotas = _listaNotas.ToList();
+        }
 
-		public override int Count
-		{
-			get
-			{
-				return ListaNotas.Count;
-			}
-		}
+        public override int Count
+        {
+            get
+            {
+                return ListaNotas.Count;
+            }
+        }
 
-		public override Java.Lang.Object GetItem(int position) => ListaNotas[position].ToString();
+        public override Java.Lang.Object GetItem(int position) => ListaNotas[position].ToString();
 
-		public override long GetItemId(int position) => ListaNotas[position].GetHashCode();
+        public override long GetItemId(int position) => ListaNotas[position].GetHashCode();
 
-		public override View GetView(int position, View convertView, ViewGroup parent)
-		{
-			View view = convertView;
-			if (view == null)
-				view = activity.LayoutInflater.Inflate(Resource.Layout.ItemNotaTemplate, null);
+        public override View GetView(int position, View convertView, ViewGroup parent)
+        {
+            View view = convertView;
+            if (view == null)
+                view = activity.LayoutInflater.Inflate(Resource.Layout.ItemNotaTemplate, null);
 
-			var tvTitulo = view.FindViewById<TextView>(Resource.Id.tvTitulo);
-			var tvContenido = view.FindViewById<TextView>(Resource.Id.tvContenido);
-			var tvFecha = view.FindViewById<TextView>(Resource.Id.tvFecha);
+            var tvTitulo = view.FindViewById<TextView>(Resource.Id.tvTitulo);
+            var tvContenido = view.FindViewById<TextView>(Resource.Id.tvContenido);
+            var tvFecha = view.FindViewById<TextView>(Resource.Id.tvFecha);
 
-			var currentNote = ListaNotas[position];
+            var currentNote = ListaNotas[position];
 
-			tvTitulo.Text = currentNote.Titulo;
-			tvContenido.Text = currentNote.Contenido;
-			tvFecha.Text = currentNote.Fecha.Value.ToString("F");
+            tvTitulo.Text = currentNote.Titulo;
 
-			return view;
-		}
-	}
+            var textToShow = currentNote.Contenido;
+            if (textToShow.Count() > 20)
+                textToShow = currentNote.Contenido.Substring(0, 20) + "...";
+
+            tvContenido.Text = textToShow;
+            tvFecha.Text = currentNote.Fecha.Value.ToString("F");
+
+            return view;
+        }
+    }
 }
